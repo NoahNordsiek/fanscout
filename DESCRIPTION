@@ -1,0 +1,19 @@
+Package: FanScout
+Title: Takes Twitter searches and filters relevant data, as well as plots out data
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "Noah",
+           family = "Nordsiek",
+           role = c("aut", "cre"),
+           email = noahnordsiek@usf.edu,
+           comment = c(ORCID = "YOUR-ORCID-ID"))
+Description: FanScout takes Twitter searches based on a specific MLB team and filters
+the data so that user_id, text, retweet_count, favorite_count, and source are shown.
+This will then be used to plot the data in various different ways so that 
+it is nice and easy to read and interpret.
+License: `use_mit_license()`, `use_gpl3_license()` or friends to
+    pick a license
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1
