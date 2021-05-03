@@ -45,5 +45,3 @@ Fanscout = function(x = "@RaysBaseball", y = "en", z = "Twitter for iPhone"){
   assign("test", RaysPlot, envir = .GlobalEnv)
   # all of this must stay inside the function
 }
-
-Fanscout("@RaysBaseball")
