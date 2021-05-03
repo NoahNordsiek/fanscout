@@ -7,6 +7,8 @@
 #' This will then be used to plot the data in various different ways so that
 #' it is nice and easy to read and interpret.
 #'
+#'@importFrom magrittr "%>%"
+#'
 #' @author Noah Nordsiek
 #'
 #' @param Search twitter for x a keyword.
@@ -28,11 +30,20 @@ Fanscout = function(x = "@RaysBaseball", y = "en", z = "Twitter for iPhone"){
 
   RaysSearch = rtweet::search_tweets(x, language = y, source = z)
 
- RaysPlot = ggplot2::ggplot(RaysSearch, ggplot2::aes(x = text, y = source)) +
-    ggplot2::geom_point()
+ RaysPlot = raystweets %>%
+   filter(display_text_width >= 0L & display_text_width <= 0L) %>%
+   filter(!(quoted_location %in%
+              "") | is.na(quoted_location)) %>%
+   filter(!(retweet_location %in% "") | is.na(retweet_location)) %>%
+   ggplot() +
+   aes(x = screen_name, colour = favorite_count, weight = favorite_count) +
+   geom_bar(fill = "#0c4c8a") +
+   scale_color_viridis_c(option = "viridis") +
+   theme_minimal()
 
  # Assign object a name with this code
   assign("test", RaysPlot, envir = .GlobalEnv)
   # all of this must stay inside the function
 }
 
+Fanscout("@RaysBaseball")
